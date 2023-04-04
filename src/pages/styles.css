@@ -1,0 +1,33 @@
+.button-style {
+    background-color: #4FB653FF;
+    border: 2px solid black;
+    border-radius: 10px;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    margin: 8px 2px;
+    cursor: pointer;
+    width: 200px;
+    height: 60px;
+}
+
+.back-button {
+    background-color: #4FB653FF;
+    border: 2px solid black;
+    border-radius: 16px;
+    color: black;
+    padding: 4px 18px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 8px 2px;
+    cursor: pointer;
+}
+
+.container {
+    text-align: center;
+}
