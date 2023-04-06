@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './styles.css';
+import SignOutButton from '../Auth/SignOutButton';
 
 function HomePage() {
     return (
@@ -21,6 +22,16 @@ function HomePage() {
                     <button className="button-style">Page Three</button>
                 </Link>
             </div>
+            <p1> TO DO: </p1>
+            <ul>
+                <li>
+                    Holidays need to be implemented
+                </li>
+                <li>
+                    Announcements needs to be implemented
+                </li>
+            </ul>
+            <SignOutButton />
         </div>
     );
 }
