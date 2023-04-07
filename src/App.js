@@ -1,104 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Routes, Navigate, useNavigate, Link } from 'react-router-dom';
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
-import HomePage from './pages/homePage';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Announcements from './pages/announcements';
-import Holidays from './pages/holidays';
+import Holidays from './pages/Holidays';
 import PageThree from './pages/pageThree';
-import { auth } from './Auth/firebase';
-
-function LoginPage() {
-    const navigate = useNavigate();
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [errorMessage, setErrorMessage] = useState('');
-
-    const handleEmailChange = (event) => {
-        setEmail(event.target.value);
-    };
-
-    const handlePasswordChange = (event) => {
-        setPassword(event.target.value);
-    };
-
-    const handleLogin = (event) => {
-        event.preventDefault();
-        setErrorMessage('');
-
-        signInWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-                const user = userCredential.user;
-                navigate('/');
-            })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                setErrorMessage(errorMessage);
-            });
-    };
-
-    const handleSignUp = (event) => {
-        event.preventDefault();
-        setErrorMessage('');
-
-        createUserWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-                const user = userCredential.user;
-                navigate('/');
-            })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                setErrorMessage(errorMessage);
-            });
-    };
-
-    return (
-        <div className="container">
-            <h1 >Login or Sign Up</h1>
-            <form onSubmit={handleLogin}>
-                <label className="label-style">
-                    Email:
-                    <br />
-                    <input type="email" value={email} onChange={handleEmailChange} required />
-                </label>
-                <br />
-                <label className="label-style">
-                    Password:
-                    <br />
-                    <input type="password" value={password} onChange={handlePasswordChange} required />
-                </label>
-                <br />
-                <button className="small-button" type="submit">Login</button>
-                <button className="small-button" onClick={handleSignUp}>Sign Up</button>
-            </form>
-            {errorMessage && <p>{errorMessage}</p>}
-        </div>
-    );
-}
+import HomePage from './pages/homePage';
 
 function App() {
-    const [user, setUser] = useState(null);
-
-    useEffect(() => {
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                setUser(user);
-            } else {
-                setUser(null);
-            }
-        });
-    }, []);
-
     return (
         <Router>
             <div>
                 <Routes>
-                    <Route path="/" element={user ? <HomePage /> : <Navigate to="/login" />} />
-                    <Route path="/announcements" element={user ? <Announcements /> : <Navigate to="/login" />} />
-                    <Route path="/holidays" element={user ? <Holidays /> : <Navigate to="/login" />} />
-                    <Route path="/page-three" element={user ? <PageThree /> : <Navigate to="/login" />} />
-                    <Route path="/login" element={<LoginPage />} />
+                    <Route path="/" element={<HomePage />} />
+                    <Route path="/Announcements" element={<Announcements />} />
+                    <Route path="/Holidays" element={<Holidays />} />
+                    <Route path="/page-three" element={<PageThree />} />
                 </Routes>
             </div>
         </Router>

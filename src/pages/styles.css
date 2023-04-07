@@ -1,23 +1,24 @@
 .button-style {
-    background-color: #2a3338;
-    border: 2px solid #101010;
+    background-color: #4FB653FF;
+    border: 2px solid black;
     border-radius: 10px;
-    color: white;
+    color: black;
+    padding: 15px 32px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
-    margin: 10px;
+    font-size: 18px;
+    margin: 8px 2px;
     cursor: pointer;
-    width: 220px;
+    width: 200px;
     height: 60px;
 }
 
 .back-button {
-    background-color: #394149;
+    background-color: #4FB653FF;
     border: 2px solid black;
     border-radius: 16px;
-    color: white;
+    color: black;
     padding: 4px 18px;
     text-align: center;
     text-decoration: none;
@@ -27,40 +28,6 @@
     cursor: pointer;
 }
 
-.small-button {
-    background-color: #394149;
-    border: 2px solid black;
-    border-radius: 5px;
-    color: white;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 14px;
-    margin: 8px 2px;
-    cursor: pointer;
-
-}
-
-
-.label-style{
-    text-align: left;
-    color: white;
-}
-
 .container {
-    border-radius: 30px;
-    box-shadow: -4px 4px 4px #3b3b3f;
-    padding: 40px;
     text-align: center;
-    background-color: #1d2126;
-
-}
-
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #27252d;
-    color: white;
 }
