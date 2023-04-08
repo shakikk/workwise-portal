@@ -14,18 +14,17 @@
 }
 
 .back-button {
-    background-color: #394149;
-    border: 2px solid black;
-    border-radius: 16px;
-    color: white;
-    padding: 4px 18px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 12px;
-    margin: 8px 2px;
-    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: -60px;
+    margin: 10px;
+    border: 0px;
+    font-size: 40px;
+    color: #31353c;
+    background-color: #27252e;
 }
+
+
 
 .small-button {
     background-color: #394149;
@@ -48,13 +47,46 @@
 }
 
 .container {
+    position: relative;
     border-radius: 30px;
     box-shadow: -4px 4px 4px #3b3b3f;
-    padding: 40px;
+    height: 500px;
+    width: 600px;
+    padding: 50px;
     text-align: center;
     background-color: #1d2126;
 
 }
+
+.announcements {
+    background-color: #31353a;
+    border: 2px solid black;
+}
+
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup {
+    height: 500px;
+    width: 600px;
+    border-radius: 30px;
+    box-shadow: -4px 4px 4px #3b3b3f;
+    padding: 50px;
+    text-align: center;
+    background-color: #1d2126;
+}
+
 
 body {
     display: flex;
