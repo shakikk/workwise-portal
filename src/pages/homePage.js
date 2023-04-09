@@ -44,9 +44,6 @@ function HomePage() {
                 <li>
                     Holidays need to be implemented
                 </li>
-                <li>
-                    Announcements needs to be implemented
-                </li>
             </ul>
             <SignOutButton />
         </div>

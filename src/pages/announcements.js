@@ -65,7 +65,7 @@ function Announcements() {
     };
 
     return (
-        <div className="container">
+        <div className="container" style={{ overflow: 'auto'}}>
             <h1>Announcements</h1>
             {allowed && (
                 <div >
