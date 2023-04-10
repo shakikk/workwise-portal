@@ -39,7 +39,6 @@ function Announcements() {
 
     const handleSubjectClick = (announcement) => {
         setSelectedAnnouncement(announcement);
-
     };
 
     const handleClosePopup = () => {
@@ -66,7 +65,7 @@ function Announcements() {
     };
 
     return (
-        <div className="container"  style={{ overflow: 'auto' }}>
+        <div className="container" style={{ overflow: 'auto'}}>
             <h1>Announcements</h1>
             {allowed && (
                 <div >
@@ -96,7 +95,7 @@ function Announcements() {
             )}
             {announcements.length > 0 ? (
                 announcements.map(announcement => (
-                    <div className="announcements" key={announcement.id} >
+                    <div className="announcements" key={announcement.id}>
                         <h2 onClick={() => handleSubjectClick(announcement)}>{announcement.title}</h2>
                     </div>
                 ))

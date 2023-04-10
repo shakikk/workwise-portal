@@ -54,7 +54,7 @@ function LoginPage() {
     };
 
     return (
-        <div className="container" style={{height: '300px', width: '300px'}}>
+        <div className="container">
             <h1 >Login or Sign Up</h1>
             <form onSubmit={handleLogin}>
                 <label className="label-style">
