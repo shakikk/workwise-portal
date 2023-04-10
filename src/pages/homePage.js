@@ -39,12 +39,6 @@ function HomePage() {
                     <button className="button-style">Page Three</button>
                 </Link>
             </div>
-            <p1> TO DO: </p1>
-            <ul>
-                <li>
-                    Holidays need to be implemented
-                </li>
-            </ul>
             <SignOutButton />
         </div>
     );
