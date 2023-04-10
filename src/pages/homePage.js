@@ -18,8 +18,8 @@ function HomePage() {
                 </Link>
             </div>
             <div>
-                <Link to="/page-three">
-                    <button className="button-style">Page Three</button>
+                <Link to="/UpdateLoginInfo">
+                    <button className="button-style">Update Login Info</button>
                 </Link>
             </div>
             <p1> TO DO: </p1>
