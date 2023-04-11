@@ -6,6 +6,7 @@ import Announcements from './pages/announcements';
 import Holidays from './pages/holidays';
 import PageThree from './pages/pageThree';
 import { auth } from './Auth/firebase';
+import Directory from './pages/directory';
 
 function LoginPage() {
     const navigate = useNavigate();
@@ -97,7 +98,12 @@ function App() {
                     <Route path="/" element={user ? <HomePage /> : <Navigate to="/login" />} />
                     <Route path="/announcements" element={user ? <Announcements /> : <Navigate to="/login" />} />
                     <Route path="/holidays" element={user ? <Holidays /> : <Navigate to="/login" />} />
+<<<<<<< Updated upstream
                     <Route path="/page-three" element={user ? <PageThree /> : <Navigate to="/login" />} />
+=======
+                    <Route path="/updateLoginInfo" element={user ? <UpdateLoginInfo /> : <Navigate to="/login" />} />
+                    <Route path="/directory" element={user ? <Directory/> : <Navigate to="/login" />} />
+>>>>>>> Stashed changes
                     <Route path="/login" element={<LoginPage />} />
                 </Routes>
             </div>

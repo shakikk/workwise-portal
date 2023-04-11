@@ -13,6 +13,24 @@
     height: 60px;
 }
 
+<<<<<<< Updated upstream
+=======
+h1 {
+    background-image: linear-gradient(45deg, #3e39e3, #5d3fee, #8f5ef6);
+    background-clip: text;
+    color: transparent;
+}
+
+table {
+    margin: 0 auto;
+}
+  
+th, td {
+    padding: 8px;
+    text-align: left;
+    border: 1px solid #ddd;
+  }
+>>>>>>> Stashed changes
 .back-button {
     background-color: #394149;
     border: 2px solid black;
