@@ -39,6 +39,12 @@ function HomePage() {
                     <button className="button-style">Update Login Info</button>
                 </Link>
             </div>
+            <div>
+                <Link to="/Directory">
+                    <button className="button-style">Employee Directory</button>
+                </Link>
+            </div>
+
             <p1> TO DO: </p1>
             <ul>
                 <li>
