@@ -31,7 +31,7 @@ function HomePage() {
             </div>
             <div>
                 <Link to="/Holidays">
-                    <button className="button-style">Holidays</button>
+                    <button className="button-style">Annual Leaves</button>
                 </Link>
             </div>
             <div>
@@ -39,6 +39,16 @@ function HomePage() {
                     <button className="button-style">Page Three</button>
                 </Link>
             </div>
+<<<<<<< Updated upstream
+=======
+            <div>
+                <Link to="/Directory">
+                    <button className="button-style">Employee Directory</button>
+                </Link>
+            </div>
+
+            
+>>>>>>> Stashed changes
             <SignOutButton />
         </div>
     );
