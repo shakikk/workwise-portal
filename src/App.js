@@ -56,6 +56,7 @@ function LoginPage() {
 
     return (
         <div className="container">
+            <h1>WorkWise Employee Portal</h1>
             <h1 >Login or Sign Up</h1>
             <form onSubmit={handleLogin}>
                 <label className="label-style">
