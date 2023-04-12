@@ -147,15 +147,14 @@ function Announcements() {
                     <div className="popup">
                         <h2>{selectedAnnouncement.title}</h2>
                         <p>{selectedAnnouncement.content}</p>
-                        <button className="small-button" onClick={handleClosePopup}>Close</button>
-                        <br />
+                        { allowed && (
+                            <button className="small-button" onClick={handleEditAnnouncementClick}>Edit Announcement</button>
+                        )}
                         { allowed && (
                             <button className="small-button" onClick={handleDeletePopup}>Delete Announcement</button>
                         )}
                         <br />
-                        { allowed && (
-                            <button className="small-button" onClick={handleEditAnnouncementClick}>Edit Announcement</button>
-                        )}
+                        <button className="small-button" onClick={handleClosePopup}>Close</button>
                     </div>
                 </div>
             )}
