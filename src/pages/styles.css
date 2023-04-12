@@ -26,17 +26,17 @@ h1 {
 table {
     margin: 0 auto;
 }
-  
+
 th, td {
     padding: 8px;
     text-align: left;
     border: 1px solid #ddd;
   }
-  
+
 .back-button {
     position: absolute;
     top: 0;
-    left: -60px;
+    left: 0px;
     margin: 10px;
     border: 0px;
     font-size: 40px;
