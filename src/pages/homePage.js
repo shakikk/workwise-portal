@@ -31,7 +31,7 @@ function HomePage() {
             </div>
             <div>
                 <Link to="/Holidays">
-                    <button className="button-style">Annual Leaves</button>
+                    <button className="button-style">Annual Leave</button>
                 </Link>
             </div>
             <div>
@@ -44,12 +44,6 @@ function HomePage() {
                     <button className="button-style">Employee Directory</button>
                 </Link>
             </div>
-            <p1> TO DO: </p1>
-            <ul>
-                <li>
-                    Holidays need to be implemented
-                </li>
-            </ul>
             <SignOutButton />
         </div>
     );

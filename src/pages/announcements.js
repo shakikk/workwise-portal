@@ -56,7 +56,7 @@ function Announcements() {
         setSelectedAnnouncement(null);
     };
 
-    
+
 
     const handleSubmit = async e => {
         e.preventDefault();
@@ -127,10 +127,9 @@ function Announcements() {
                         <div>
                             <button className="small-button" onClick={handleNewAnnouncementClick}>New Announcement</button>
                             <br/>
-                            <button className="small-button" onClick={() => navigate(-1)}>Back</button>
                         </div>
-                        
-                        
+
+
                     )}
                 </div>
             )}
@@ -184,13 +183,13 @@ function Announcements() {
                         </div>
                     ) }
                 </div>
-            )}  
+            )}
 
 
-            
 
 
-            
+
+
 
 
 

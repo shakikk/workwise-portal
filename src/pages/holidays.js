@@ -7,10 +7,10 @@ import { collection, query, orderBy, onSnapshot, addDoc, deleteDoc, updateDoc, d
 //import { set } from 'core-js/core/dict';
 
 function Holidays() {
-   
+
     const navigate = useNavigate();
     const [annualLeaves, setAnnualLeaves] = useState([]);
-    
+
 
     const [isManager, setIsManager] = useState(false);
 
@@ -22,47 +22,47 @@ function Holidays() {
 
     const [selectedLeave, setSelectedLeave] = useState(null);
 
-    
+
     useEffect(() => {
-       
+
         const unsubscribe = auth.onAuthStateChanged(user => {
             setUserEmail(user.email);
-            if (user && user.email === 'testing@testing.com') { 
-                
+            if (user && user.email === 'testing@testing.com') {
+
                 setIsManager(true);
                 console.log("manager is set.")
-                
+
             }
         });
 
         return () => unsubscribe();
     }, []);
 
-    
+
 
 
     useEffect(() => {
 
 
-        
+
         const q = query(collection(db, "annualLeaves"), orderBy("createdAt", "desc"));
         console.log("is manager:" + isManager);
         const unsubscribe = onSnapshot(q, (querySnapshot) => {
             const annualLeaves = [];
-            
+
             querySnapshot.forEach((doc) => {
-            
+
                 //if (auth.currentUser.email === "testing@testing.com" || doc.data().email === auth.currentUser.email ){
-                    
+
                 if (auth.currentUser.email === "testing@testing.com" || doc.data().email === auth.currentUser.email ){
-                   
+
                     annualLeaves.push({ id: doc.id, ...doc.data() });
 
-                    
+
                 }
 
-                
-                
+
+
             });
             setAnnualLeaves(annualLeaves);
         }, (error) => {
@@ -75,10 +75,10 @@ function Holidays() {
     const handleSubmitRequest = async e => {
         e.preventDefault();
         setErrorMessage('');
-    
+
         //const { fromDate, toDate } = e.target.elements;
         const createdAt = new Date();
-    
+
         try {
             console.log(fromDate.value);
             await addDoc(collection(db, "annualLeaves"), { fromDate: fromDate, toDate: toDate, email: userEmail, status: "pending", createdAt });
@@ -88,7 +88,7 @@ function Holidays() {
             console.error("Error submitting request", error);
             setErrorMessage('Error submitting request');
         }
-    
+
 
     };
 
@@ -117,7 +117,7 @@ function Holidays() {
             console.error("Error filing request.", error);
         }
 
-        
+
         setSelectedLeave(null);
     };
 
@@ -138,14 +138,15 @@ function Holidays() {
         setSelectedLeave(leave);
         console.log("request denied.");
     }; */
-    
-    
-    
+
+
+
 
 
     return (
         <div className="container">
-            {  !isManager &&(   
+            <h1>Holidays</h1>
+            {  !isManager &&(
                 <div>
                     <h1 >Submit an Annual Leave Request</h1>
 
@@ -164,15 +165,14 @@ function Holidays() {
                         <br />
                         <button className="small-button" type="submit">Submit Request</button>
                         <br />
-                        
+
                         {/* <button className="small-button" onClick={handleSignUp}>Sign Up</button> */}
                     </form>
-                    {errorMessage && <p>{errorMessage}</p>} 
+                    {errorMessage && <p>{errorMessage}</p>}
                 </div>
             )
 
             }
-            <button className="small-button" onClick={() => navigate(-1)}>Back</button>
             <br />
             <table border = "1">
                 <thead>
@@ -181,13 +181,13 @@ function Holidays() {
                         <th>To</th>
                         <th>Email</th>
                         <th>Status</th>
-                        
+
                     </tr>
                 </thead>
                 <tbody>
-            {annualLeaves.length > 0 ? ( 
+            {annualLeaves.length > 0 ? (
                 annualLeaves.map(leave => (
-                    
+
                     <tr key={leave.id}>
                         <td>{leave.fromDate}</td>
                         <td>{leave.toDate}</td>
@@ -196,20 +196,20 @@ function Holidays() {
 
                         { isManager && (
                         <td>
-                            <button onClick={() => handleStatusClick(leave,"accepted")}>Accept</button> 
-                            
+                            <button onClick={() => handleStatusClick(leave,"accepted")}>Accept</button>
+
                         </td>
                         )  }
                         { isManager && (
                         <td>
 
-                         <button onClick={() => handleStatusClick(leave,"denied")}>Deny</button> 
+                         <button onClick={() => handleStatusClick(leave,"denied")}>Deny</button>
                         </td>
                         )  }
                         { !isManager && (
 
                         <td>
-                              <button onClick={() => handleDeleteLeave(leave)}>Remove</button> 
+                              <button onClick={() => handleDeleteLeave(leave)}>Remove</button>
                         </td>
                         )}
                     </tr>
@@ -219,6 +219,9 @@ function Holidays() {
             )}
             </tbody>
             </table>
+            <Link to="/">
+                <button className="back-button">&#60;</button>
+            </Link>
         </div>
     );
 }
