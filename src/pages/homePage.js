@@ -35,20 +35,21 @@ function HomePage() {
                 </Link>
             </div>
             <div>
-                <Link to="/page-three">
-                    <button className="button-style">Page Three</button>
+                <Link to="/UpdateLoginInfo">
+                    <button className="button-style">Update Login Info</button>
                 </Link>
             </div>
-<<<<<<< Updated upstream
-=======
             <div>
                 <Link to="/Directory">
                     <button className="button-style">Employee Directory</button>
                 </Link>
             </div>
-
-            
->>>>>>> Stashed changes
+            <p1> TO DO: </p1>
+            <ul>
+                <li>
+                    Holidays need to be implemented
+                </li>
+            </ul>
             <SignOutButton />
         </div>
     );
