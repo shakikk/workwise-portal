@@ -4,7 +4,7 @@ import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, on
 import HomePage from './pages/homePage';
 import Announcements from './pages/announcements';
 import Holidays from './pages/holidays';
-import PageThree from './pages/pageThree';
+import UpdateLoginInfo from './pages/updateLoginInfo';
 import { auth } from './Auth/firebase';
 import Directory from './pages/directory';
 
