@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate, useNavigate, Link } from 'react-router-dom';
 import './styles.css';
 import { auth, db } from '../Auth/firebase';
-import { collection, query, orderBy, onSnapshot, addDoc } from "firebase/firestore";
+import { collection, query, orderBy, onSnapshot, addDoc, deleteDoc, updateDoc, doc} from "firebase/firestore";
 
 
 function Announcements() {
+    const navigate = useNavigate();
     const [announcements, setAnnouncements] = useState([]);
     const [allowed, setAllowed] = useState(false);
     const [showForm, setShowForm] = useState(false);
+    const [showEditForm, setShowEditForm] = useState(false);
     const [selectedAnnouncement, setSelectedAnnouncement] = useState(null);
 
     useEffect(() => {
@@ -45,6 +47,17 @@ function Announcements() {
         setSelectedAnnouncement(null);
     };
 
+    const handleDeletePopup = async () => {
+        try {
+            await deleteDoc(doc(db, "announcements", selectedAnnouncement.id));
+        } catch (error) {
+            console.error("Error deleting announcement: ", error);
+        }
+        setSelectedAnnouncement(null);
+    };
+
+    
+
     const handleSubmit = async e => {
         e.preventDefault();
 
@@ -60,8 +73,30 @@ function Announcements() {
         setShowForm(false);
     };
 
+    const handleEditSubmit = async e => {
+        e.preventDefault();
+
+        const { title, content } = e.target.elements;
+
+        try {
+            //await updateDoc(collection(db, "announcements"), { title: title.value, content: content.value, createdAt });
+            await updateDoc(doc(db, "announcements", selectedAnnouncement.id), {
+                title: title.value, content: content.value, createdAt: selectedAnnouncement.createdAt
+              });
+        } catch (error) {
+            console.error("Error editing announcement: ", error);
+        }
+
+        setShowEditForm(false);
+        setSelectedAnnouncement(null);
+    };
+
     const handleNewAnnouncementClick = () => {
         setShowForm(true);
+    };
+
+    const handleEditAnnouncementClick = () => {
+        setShowEditForm(true);
     };
 
     return (
@@ -89,7 +124,13 @@ function Announcements() {
                             </div>
                         </div>
                     ) : (
-                        <button className="small-button" onClick={handleNewAnnouncementClick}>New Announcement</button>
+                        <div>
+                            <button className="small-button" onClick={handleNewAnnouncementClick}>New Announcement</button>
+                            <br/>
+                            <button className="small-button" onClick={() => navigate(-1)}>Back</button>
+                        </div>
+                        
+                        
                     )}
                 </div>
             )}
@@ -108,9 +149,51 @@ function Announcements() {
                         <h2>{selectedAnnouncement.title}</h2>
                         <p>{selectedAnnouncement.content}</p>
                         <button className="small-button" onClick={handleClosePopup}>Close</button>
+                        <br />
+                        { allowed && (
+                            <button className="small-button" onClick={handleDeletePopup}>Delete Announcement</button>
+                        )}
+                        <br />
+                        { allowed && (
+                            <button className="small-button" onClick={handleEditAnnouncementClick}>Edit Announcement</button>
+                        )}
                     </div>
                 </div>
             )}
+
+            {allowed && (
+                <div >
+                    {showEditForm && (
+                        <div className="overlay">
+                            <div className="popup">
+                                <form onSubmit={handleEditSubmit}>
+                                    <div>
+                                        <div>
+                                            <label htmlFor="title">Title:</label>
+                                            <input type="text" id="title" required />
+                                        </div>
+                                        <div>
+                                            <label htmlFor="content">Content:</label>
+                                            <textarea id="content" required></textarea>
+                                        </div>
+                                        <button className="small-button" type="submit">Edit Announcement</button>
+                                        <button className="small-button" onClick={() => setShowEditForm(false)}>Cancel</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    ) }
+                </div>
+            )}  
+
+
+            
+
+
+            
+
+
+
             <Link to="/">
                 <button className="back-button">&#60;</button>
             </Link>
