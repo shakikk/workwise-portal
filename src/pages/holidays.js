@@ -8,7 +8,7 @@ function Holidays() {
             <h1>Holidays - Under Maintenance</h1>
             <p>This page is currently under maintenance.</p>
             <Link to="/">
-                <button className="back-button">Back to Home Page</button>
+                <button className="back-button">&#60;</button>
             </Link>
         </div>
     );
