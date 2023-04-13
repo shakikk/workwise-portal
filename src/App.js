@@ -5,6 +5,8 @@ import HomePage from './pages/homePage';
 import Announcements from './pages/announcements';
 import Holidays from './pages/holidays';
 import UpdateLoginInfo from './pages/updateLoginInfo';
+import UpdateEmail from './pages/updateEmail';
+import UpdatePassword from './pages/updatePassword';
 import { auth } from './Auth/firebase';
 
 function LoginPage() {
@@ -97,6 +99,8 @@ function App() {
                     <Route path="/" element={user ? <HomePage /> : <Navigate to="/login" />} />
                     <Route path="/announcements" element={user ? <Announcements /> : <Navigate to="/login" />} />
                     <Route path="/holidays" element={user ? <Holidays /> : <Navigate to="/login" />} />
+                    <Route path="/updateEmail" element={user ? <UpdateEmail/> : <Navigate to="/updateEmail" />} />
+                    <Route path="/updatePassword" element={user ? <UpdatePassword/> : <Navigate to="/updatePassword" />} />
                     <Route path="/updateLoginInfo" element={user ? <UpdateLoginInfo /> : <Navigate to="/login" />} />
                     <Route path="/login" element={<LoginPage />} />
                 </Routes>

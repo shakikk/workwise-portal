@@ -42,23 +42,16 @@ function UpdateLoginInfo() {
     return (
         <div className="container">
             <h1>Update Personal Information</h1>
-            <form onSubmit={handleSubmit}>
-                <label className="label-style">
-                    Email:
-                    <br />
-                    <input type="email" onChange={handleEmailChange}  />
-                </label>
-                <br />
-                <br />
-                <label className="label-style">
-                    New Password:
-                    <br />
-                    <input type="password" onChange={handlePasswordChange}  />
-                </label>
-                <br />
-                <br />
-                <button className="small-button" type="submit">Update Information</button>
-            </form>
+                <div>
+                    <Link to="/UpdateEmail">
+                        <button className="button-style">Update Email</button>
+                    </Link>
+                </div>
+                <div>
+                    <Link to="/UpdatePassword">
+                        <button className="button-style">Update Password</button>
+                    </Link>
+                </div>
             <Link to="/">
                 <button className="back-button">&#60;</button>
             </Link>
